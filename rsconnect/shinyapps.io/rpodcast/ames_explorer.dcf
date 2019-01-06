@@ -1,0 +1,12 @@
+name: ames_explorer
+title: ames_explorer
+username:
+account: rpodcast
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 618849
+bundleId: 1769071
+url: https://rpodcast.shinyapps.io/ames_explorer/
+when: 1545073879.53548
+asMultiple: FALSE
+asStatic: FALSE
