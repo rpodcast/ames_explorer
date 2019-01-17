@@ -83,6 +83,11 @@ scatterplot_mod_server <- function(input,
     
     # was: if (highlight_ind())
     if (highlight_ind()) {
+      validate(
+        need(
+          any(dataset()$selected_), "Brush at least one point on a plot"
+        )
+      )
       df <- dataset() %>%
         filter(selected_) %>%
         slice(highlight_rows())
@@ -103,6 +108,11 @@ scatterplot_mod_server <- function(input,
                   highlight_rows = highlight_rows())
     
     if (highlight_ind()) {
+      validate(
+        need(
+          any(dataset()$selected_), "Brush at least one point on a plot"
+        )
+      )
       df <- dataset() %>%
         filter(selected_) %>%
         slice(highlight_rows())
