@@ -6,6 +6,7 @@ library(ggrepel)
 library(AmesHousing)
 library(shiny)
 library(DT)
+library(shinymeta)
 
 # prepare dataset
 ames <- make_ames()
