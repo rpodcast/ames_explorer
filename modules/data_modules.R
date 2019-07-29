@@ -66,13 +66,15 @@ varselect_mod_server <- function(input, output, session) {
 
   return(
     list(
-      xvar = reactive({ input$xvar }),
-      yvar = reactive({ input$yvar }),
-      facetvar = reactive({ 
+      xvar = metaReactive({ !!input$xvar }),
+      yvar = metaReactive({ !!input$yvar }),
+      facetvar = metaReactive2({ 
         if (input$groupvar == "") {
           return(NULL)
         } else {
-          return(input$groupvar) 
+          metaExpr(
+            !!input$groupvar
+          )
         }
       })
     )
