@@ -63,16 +63,16 @@ varselect_mod_ui <- function(id) {
 #'   \item{facetvar}{reactive character indicating variable used for defining plot facets}
 #' }
 varselect_mod_server <- function(input, output, session) {
-
+  
   return(
     list(
       xvar = reactive({ input$xvar }),
       yvar = reactive({ input$yvar }),
-      facetvar = reactive({ 
+      facetvar = reactive({
         if (input$groupvar == "") {
           return(NULL)
         } else {
-          return(input$groupvar) 
+          return(input$groupvar)
         }
       })
     )
@@ -98,20 +98,15 @@ dataviewer_mod_ui <- function(id) {
 #' @param dataset data frame (reactive) used in scatterplots as produced by
 #'   the \code{brushedPoints} function in the scatterplot module
 #'
-#' @return reactive vector of row IDs corresponding to the current view in the 
+#' @return reactive vector of row IDs corresponding to the current view in the
 #'   datatable widget.
 dataviewer_mod_server <- function(input, output, session, dataset) {
   
-  cols_select <- c("Year_Built", "Year_Sold", "Sale_Price", "Sale_Condition", "Lot_Frontage", "House_Style", 
+  cols_select <- c("Year_Built", "Year_Sold", "Sale_Price", "Sale_Condition", "Lot_Frontage", "House_Style",
                    "Lot_Shape", "Overall_Cond", "Overall_Qual")
   
   output$table <- renderDT({
     filter(dataset(), selected_) %>%
       select(one_of(cols_select))
-  },
-  filter = 'top',
-  selection = "none")
-  
-  # return highlight indicator and vector of row IDs selected by datatable filters
-  reactive({ input$table_rows_all })
+  }, filter = 'top', selection = 'none')
 }
